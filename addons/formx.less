@@ -1,0 +1,109 @@
+/*
+FORM X
+	by Iván E. Mendoza (@dic7)
+*/
+
+// CLASSES/NOTATION
+// 
+// field (label+input) 	-> .field
+// optional field 		-> .field.optional
+//
+// 	label 				-> label
+// 	input text 			-> .txt
+// 	textarea 			-> textarea.txt
+// 	input submit 		-> a.button [.send, .cta]
+// 	input checkbox 		-> input.chk
+// 	input radio 		-> input.rdo
+// 	select 				-> select.cmbox
+
+#formx{
+	.inputText(@radius: .25em){
+		#borders 				.rounded(@radius);
+		border:					solid 1px #aaa;
+		padding:				.35em;
+		margin-right:			.2em;
+		-webkit-appearance:		none;
+		outline: 				none;
+	}
+	.default{
+		.field{
+			#fontsx .controls;
+			margin:.4em 0;
+			&.integrated{
+				#formx .integratedField;
+				.input-text.textarea{
+					background:#fcfcfc;
+					&:hover{background:none;}
+				}
+			}
+		}
+		.areaBtns{
+			clear:both;
+			overflow:hidden;
+			.rightAlign;
+			margin:.8em 0;
+			.button{
+				.leftAlign;
+				margin:0 0 0 .4em;
+			}
+			.button.send{
+				#uix .mainButton();
+			}
+		}
+	}
+	.formArea{
+		clear:both;
+		margin:0;
+		padding:0;
+		overflow:hidden;
+	}
+	.integratedField(@labelBg: #eee, @labelText: #333, @txtOptional: "optional"){
+		@marginStep:.2em;
+		background:#fff;
+		border:solid 1px #bbb;
+		padding:@marginStep;
+		#borders .rounded(@marginStep);
+		overflow:hidden;
+		height:auto;
+		&>label{
+			overflow:hidden;
+			width:20%;
+			background:@labelBg;
+			color:@labelText;
+			#borders .rounded(@marginStep);
+			margin-right:1%;
+			padding:@marginStep*2;
+			font-size:.85em;
+			.leftAlign;
+			#shadows .drop(1px, 1px, 3px, .1);
+			line-height:1.3;
+			height:1em*1.1;
+
+		}
+		&>.input-text{
+			.leftAlign;
+			border:none;
+			width:76%;
+			padding:.2em;
+			&.textarea{
+				#shadows .inner(3px, 0, 5px, .02);
+			}
+		}
+		&.optional{
+			label{
+				background:lighten(@labelBg, 30%);
+				color:@labelText;
+				&:after{
+					background:lighten(@labelBg, 60%);
+					.rightAlign;
+					#borders .rounded(.3em);
+					content:@txtOptional;
+					font-size:.7em;
+					margin:.1em;
+					padding:.2em .4em;
+					color:lighten(@labelText, 15%);
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,120 @@
+#labelx{
+	.label(@bg: #fff, @text: #000, @radius:.3em, @padding:.2em .4em){ // single, to use with <a> or <span>
+		display:			inline-block;
+		padding:			@padding;
+		margin:				.1em .2em .1em .1em;
+		text-decoration:	none;
+		color:				@text;
+		background:			@bg;
+		#borders 			.rounded(@radius);
+		&:hover{
+			color:			@text;
+			background:		lighten(@bg, 8%);
+			#shadows 		.drop(1px, 1px, 5px, .2);
+		}
+
+	}
+	.labels(@bg: #fff, @text: #000, @align:left, @radius:.3em){ // to use with <ul> or <ol>
+		text-align:			@align;
+		font-size:			.8em;
+		margin:				0;
+		li{
+			display:		inline-block;
+			a{
+				#labelx 	.label(@bg, @text, @radius, .2em .8em);
+			}
+		}
+	}
+}
+#bubblex{
+	.body(@size: 10px, @bg: #fff, @border: #ccc, @borderwidth: 1px, @position: 50%){
+		position: 			relative;
+		display:			inline-block;
+		background: 		@bg;
+		border: 			1px solid @border;
+		padding:			.2em;
+		#borders 			.rounded(.2em);
+		&:after, &:before {
+			border: 		solid transparent;
+			content: 		" ";
+			height: 		0;
+			width: 			0;
+			position: 		absolute;
+			pointer-events: none;
+		}
+		&:after {
+			border-width: 	@size;
+		}
+		&:before {
+			border-width: 	@size+@borderwidth;
+		}
+	}
+	.up(@size: 10px, @bg: #fff, @border: #ccc, @borderwidth: 1px, @position: 50%){
+		#bubblex 					.body(@size, @bg, @border, @borderwidth, @position);
+		margin-top:					@size;
+		&:after, &:before {
+			bottom: 				100%;
+		}
+		&:after {
+			border-bottom-color: 	@bg;
+			left: 					@position;
+			margin-left: 			-(@size);
+		}
+		&:before {
+			border-bottom-color: 	@border;
+			left: 					@position;
+			margin-left: 			-(@size+@borderwidth);
+		}
+	}
+	.right(@size: 10px, @bg: #fff, @border: #ccc, @borderwidth: 1px, @position: 50%){
+		#bubblex 					.body(@size, @bg, @border, @borderwidth, @position);
+		margin-right:				@size;
+		&:after, &:before {
+			left: 					100%;
+		}
+		&:after {
+			border-left-color: 		@bg;
+			top: 					@position;
+			margin-top: 			-(@size);
+		}
+		&:before {
+			border-left-color:		@border;
+			top: 					@position;
+			margin-top: 			-(@size+@borderwidth);
+		}
+	}
+	.down(@size: 10px, @bg: #fff, @border: #ccc, @borderwidth: 1px, @position: 50%){
+		#bubblex 					.body(@size, @bg, @border, @borderwidth, @position);
+		margin-bottom:				@size;
+		&:after, &:before {
+			top: 					100%;
+		}
+		&:after {
+			border-top-color:		@bg;
+			left:					@position;
+			margin-left: 			-(@size);
+		}
+		&:before {
+			border-top-color: 		@border;
+			left: 					@position;
+			margin-left: 			-(@size+@borderwidth);
+		}
+	}
+	.left(@size: 10px, @bg: #fff, @border: #ccc, @borderwidth: 1px, @position: 50%){
+		#bubblex 					.body(@size, @bg, @border, @borderwidth, @position);
+		margin-left:				@size;
+		&:after, &:before {
+			right: 					100%;
+		}
+		&:after {
+			border-right-color:		@bg;
+			top: 					@position;
+			margin-top: 			-(@size);
+		}
+		&:before {
+			border-right-color: 	@border;
+			top: 					@position;
+			margin-top: 			-(@size+@borderwidth);
+		}
+	}
+}

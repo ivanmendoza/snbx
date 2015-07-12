@@ -1,0 +1,120 @@
+#iconsx{
+	.register(@size: 20px, @posY: 0, @filename: @size, @imageWidth: @size*3){
+		line-height:		@size;
+		display: 			inline-block;
+		&>.icon{
+			display: 		inline-block;
+			width: 			@size;
+			height: 		@size;
+			margin-top: 	0;
+			background: 	url("@{images_path}/icons/@{filename}.png") no-repeat 0 @posY*@size*-1;
+			@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi){ 
+				background: 		url("@{images_path}/icons/@{filename}@2x.png") no-repeat 0 @posY*@size*-1;
+				#background .size(@imageWidth, auto);
+			}
+		}
+		&:hover{
+			&>.icon{
+				background-position: @size*-1 @posY*@size*-1;
+			}
+		}
+		&:active, &.active, &.selected{
+			&>.icon{
+				background-position: 2*@size*-1 @posY*@size*-1;
+			}
+		}
+	}
+	
+	.single_register(@size: 20px, @posX: 0, @posY: 0, @filename: @size, @imageWidth: @size*3){
+		line-height:@size;
+		display: inline-block;
+		&>.icon{
+			display: inline-block;
+			width: @size;
+			height: @size;
+			margin-top: 0;
+			background: url("@{images_path}/icons/@{filename}.png") no-repeat @posX*@size*-1 @posY*@size*-1;
+			@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi){ 
+				background: url("@{images_path}/icons/@{filename}@2x.png") no-repeat @posX*@size*-1 @posY*@size*-1;
+				#background .size(@imageWidth, auto);
+			}
+		}
+	}
+	
+// Direct register: applied to .icon element directly
+	.direct_register(@size:20px, @posX: 0, @posY: 0, @filename: @size, @scale: 1, @imageWidth: auto){
+		display: inline-block;
+		.imageBox(@size*@scale, @size*@scale, @posX*@size*-1, @posY*@size*-1);
+		background-image: url("@{images_path}/icons/@{filename}.png");
+		@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi){ 
+			background-image: url("@{images_path}/icons/@{filename}@2x.png");
+			#background .size(@imageWidth, auto);
+		}
+	}
+
+// Manual register: applied to .icon element directly with specific values for position and size
+	.manual_register(@width:20px, @height:20px, @posX: 0, @posY: 0, @filename: @size, @imageWidth: auto){
+		display: inline-block;
+		.imageBox(@width, @height, @posX, @posY);
+		background-image: url("@{images_path}/icons/@{filename}.png");
+		@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi){ 
+			background-image: url("@{images_path}/icons/@{filename}@2x.png");
+			#background .size(@imageWidth, auto);
+		}
+		
+	}
+	
+	.top(@margin:.5em){
+		text-align: center;
+		line-height:1;
+		&>.icon{
+			display:block;
+			float: inherit;
+			clear: both;
+			margin:0 auto @margin;
+		}
+	}
+	.right(@margin:.5em){
+		vertical-align: middle;
+		&>.icon{
+			float: right;
+			clear: none;
+			margin-left: @margin;
+		}
+	}
+	.bottom(@margin:.5em){
+		text-align: center;
+		line-height:1;
+		&>.icon{
+			display:block;
+			float: inherit;
+			clear: both;
+			margin: @margin auto 0;
+		}
+		&>span.label{
+			display: block;
+			clear:both;
+		}
+	}
+	.left(@margin:.5em){
+		vertical-align: middle;
+		&>.icon{
+			float: left;
+			clear: none;
+			margin-right:@margin;
+		}
+	}
+	
+	.boxed(@color: #aaa){
+		&>.icon{
+			border:solid 1px @color;
+		}
+	}
+	.circled(@bordercolor: #aaa, @bg: none, @size:20px){
+		&>.icon{
+			border:solid 1px @bordercolor;
+			background-color: @bg;
+			#borders .rounded(@size);
+		}
+	}
+}
