@@ -1,4 +1,4 @@
-SNBX (Alpha)
+SNBX
 =============
 
 A responsive web design framework with mobile-first approach. 
@@ -9,5 +9,3 @@ The first time that import _snbx.less file you only gets a kind of CSS reset, ev
 
 
 * [Visit the demos](http://ivanmendoza.net/labs/snbx/)
-* [How to use](http://bitbucket.org/ivanmendoza/snbx/wiki/Basic_demo/)
-* [Documentation](http://bitbucket.org/ivanmendoza/snbx/wiki/)
