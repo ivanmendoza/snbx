@@ -1,6 +1,6 @@
 {
   "name": "SNBX",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A responsive web design framework with mobile-first approach.",
   "devDependencies": {
     "grunt": "~0.4.5",
