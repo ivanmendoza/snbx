@@ -6,7 +6,7 @@
   ],
   "description": "A responsive web design framework with mobile-first approach.",
   "main": [
-    "snbx.less"
+    "dist/snbx-jquery.min.js"
   ],
   "keywords": [
     "snbx",
