@@ -13,7 +13,12 @@
 		-ms-flex-direction: row;
 		flex-direction: row;
 	}
-	
+	.flex(@values){
+		-webkit-flex: 			@values;
+		-moz-flex: 				@values;
+	    -ms-flex: 				@values;
+	    flex: 					@values;
+	}
 	.flow(@flow: row nowrap){
 		-webkit-flex-flow: 			@flow;
 		-moz-flex-flow: 			@flow;
